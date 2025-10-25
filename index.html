@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <title>AIおみくじ</title>
+  <style>
+    body {
+      font-family: "Hiragino Kaku Gothic ProN", sans-serif;
+      text-align: center;
+      padding-top: 100px;
+      background: linear-gradient(180deg, #fff, #ffeaf5);
+    }
+    h1 { color: #d63384; }
+    button {
+      font-size: 18px;
+      padding: 10px 20px;
+      border: none;
+      background-color: #d63384;
+      color: white;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    p {
+      font-size: 20px;
+      margin-top: 30px;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+  <h1>💖 AIおみくじ 💖</h1>
+  <button onclick="omikuji()">おみくじを引く！</button>
+  <p id="result"></p>
+
+  <script>
+    const results = ["大吉！最高の1日！🌈", "中吉！良いことが起こるかも💫", "小吉！ちょっと嬉しいことがある！🍀", "吉！落ち着いて進もう🌸", "凶…でも立ち直れる💪"];
+    function omikuji() {
+      const r = Math.floor(Math.random() * results.length);
+      document.getElementById("result").textContent = results[r];
+    }
+  </script>
+</body>
+</html>
