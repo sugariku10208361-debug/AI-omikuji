@@ -1,43 +1,107 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="utf-8">
-  <title>AIおみくじ</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ギャル恋みくじ ✨</title>
+  <meta name="description" content="ギャル語で励まされる恋みくじ💖ローズピンク×金デザインで今日の恋運チェック💫">
   <style>
+    :root {
+      --bg: #ffe6f2;
+      --card: #fff5fa;
+      --accent: #ff66a3;
+      --gold: #ffd700;
+      --text: #80274d;
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
     body {
-      font-family: "Hiragino Kaku Gothic ProN", sans-serif;
+      background: var(--bg);
+      font-family: "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+      color: var(--text);
       text-align: center;
-      padding-top: 100px;
-      background: linear-gradient(180deg, #fff, #ffeaf5);
+      overflow-x: hidden;
     }
-    h1 { color: #d63384; }
+    h1 {
+      font-size: 2.2em;
+      margin-top: 40px;
+      color: var(--accent);
+      text-shadow: 0 0 10px rgba(255, 150, 200, 0.6);
+    }
+    .name-input {
+      margin-top: 20px;
+      padding: 10px;
+      border: 2px solid var(--accent);
+      border-radius: 10px;
+      font-size: 1em;
+    }
     button {
-      font-size: 18px;
-      padding: 10px 20px;
-      border: none;
-      background-color: #d63384;
+      background: linear-gradient(135deg, var(--accent), var(--gold));
       color: white;
-      border-radius: 8px;
+      border: none;
+      padding: 12px 28px;
+      border-radius: 25px;
+      font-size: 1.1em;
       cursor: pointer;
+      margin-top: 25px;
+      transition: transform 0.3s;
+      box-shadow: 0 0 15px rgba(255, 100, 180, 0.5);
     }
-    p {
-      font-size: 20px;
-      margin-top: 30px;
-      color: #333;
+    button:hover {
+      transform: scale(1.05);
+    }
+    .cards {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 40px;
+      gap: 20px;
+    }
+    .card {
+      width: 100px;
+      height: 160px;
+      border-radius: 15px;
+      background: var(--card);
+      box-shadow: 0 0 20px rgba(255, 150, 200, 0.6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 1.2em;
+      color: var(--accent);
+      position: relative;
+      cursor: pointer;
+      transition: all 0.4s ease;
+    }
+    .card:hover {
+      transform: rotate(-3deg) scale(1.05);
+      background: linear-gradient(145deg, var(--gold), var(--accent));
+      color: white;
+      box-shadow: 0 0 25px rgba(255, 200, 230, 0.8);
+    }
+    .result {
+      margin-top: 40px;
+      font-size: 1.3em;
+      color: var(--text);
+      animation: fadeIn 1.5s ease;
+    }
+    .lucky-item {
+      margin-top: 20px;
+      font-size: 1.1em;
+      color: var(--gold);
+      text-shadow: 0 0 10px rgba(255, 210, 230, 0.8);
+    }
+    @keyframes fadeIn {
+      from {opacity: 0;}
+      to {opacity: 1;}
     }
   </style>
 </head>
 <body>
-  <h1>💖 AIおみくじ 💖</h1>
-  <button onclick="omikuji()">おみくじを引く！</button>
-  <p id="result"></p>
+  <h1>💖 ギャル恋みくじ 💖</h1>
+  <input type="text" id="name" class="name-input" placeholder="あなたの名前を入力してね♡">
+  <div c
 
-  <script>
-    const results = ["大吉！最高の1日！🌈", "中吉！良いことが起こるかも💫", "小吉！ちょっと嬉しいことがある！🍀", "吉！落ち着いて進もう🌸", "凶…でも立ち直れる💪"];
-    function omikuji() {
-      const r = Math.floor(Math.random() * results.length);
-      document.getElementById("result").textContent = results[r];
-    }
-  </script>
-</body>
-</html>
