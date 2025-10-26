@@ -1,107 +1,113 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ギャル恋みくじ ✨</title>
-  <meta name="description" content="ギャル語で励まされる恋みくじ💖ローズピンク×金デザインで今日の恋運チェック💫">
-  <style>
-    :root {
-      --bg: #ffe6f2;
-      --card: #fff5fa;
-      --accent: #ff66a3;
-      --gold: #ffd700;
-      --text: #80274d;
-    }
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-    body {
-      background: var(--bg);
-      font-family: "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
-      color: var(--text);
-      text-align: center;
-      overflow-x: hidden;
-    }
-    h1 {
-      font-size: 2.2em;
-      margin-top: 40px;
-      color: var(--accent);
-      text-shadow: 0 0 10px rgba(255, 150, 200, 0.6);
-    }
-    .name-input {
-      margin-top: 20px;
-      padding: 10px;
-      border: 2px solid var(--accent);
-      border-radius: 10px;
-      font-size: 1em;
-    }
-    button {
-      background: linear-gradient(135deg, var(--accent), var(--gold));
-      color: white;
-      border: none;
-      padding: 12px 28px;
-      border-radius: 25px;
-      font-size: 1.1em;
-      cursor: pointer;
-      margin-top: 25px;
-      transition: transform 0.3s;
-      box-shadow: 0 0 15px rgba(255, 100, 180, 0.5);
-    }
-    button:hover {
-      transform: scale(1.05);
-    }
-    .cards {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      margin-top: 40px;
-      gap: 20px;
-    }
-    .card {
-      width: 100px;
-      height: 160px;
-      border-radius: 15px;
-      background: var(--card);
-      box-shadow: 0 0 20px rgba(255, 150, 200, 0.6);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: bold;
-      font-size: 1.2em;
-      color: var(--accent);
-      position: relative;
-      cursor: pointer;
-      transition: all 0.4s ease;
-    }
-    .card:hover {
-      transform: rotate(-3deg) scale(1.05);
-      background: linear-gradient(145deg, var(--gold), var(--accent));
-      color: white;
-      box-shadow: 0 0 25px rgba(255, 200, 230, 0.8);
-    }
-    .result {
-      margin-top: 40px;
-      font-size: 1.3em;
-      color: var(--text);
-      animation: fadeIn 1.5s ease;
-    }
-    .lucky-item {
-      margin-top: 20px;
-      font-size: 1.1em;
-      color: var(--gold);
-      text-shadow: 0 0 10px rgba(255, 210, 230, 0.8);
-    }
-    @keyframes fadeIn {
-      from {opacity: 0;}
-      to {opacity: 1;}
-    }
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ギャル恋みくじ</title>
+<meta name="description" content="ギャル語で応援してくれる恋みくじ。ローズピンク×ゴールドのカードから1枚選んで運勢チェック♡">
+<style>
+  :root{
+    --bg:#ffe6f2; --ink:#7a2a4a; --accent:#ff66a3; --gold:#ffd700; --card:#fff5fa;
+  }
+  *{box-sizing:border-box} html,body{margin:0}
+  body{background:var(--bg); color:var(--ink); font-family:"Hiragino Kaku Gothic ProN","Yu Gothic",system-ui,sans-serif; text-align:center}
+  header{padding:28px 16px 8px}
+  h1{font-size:32px; color:var(--accent); text-shadow:0 0 10px rgba(255,140,200,.6)}
+  main{max-width:960px; margin:0 auto; padding:12px 16px 40px}
+  .field{margin-top:18px}
+  input[type="text"]{
+    padding:12px 14px; border:2px solid var(--accent); border-radius:12px; font-size:16px; width:280px; background:#fff
+  }
+  .btn{
+    display:inline-block; margin-top:14px; padding:12px 22px; border:none; border-radius:999px; color:#fff;
+    background:linear-gradient(135deg,var(--accent),#ff2e7a); cursor:pointer; font-weight:700; box-shadow:0 8px 18px rgba(255,80,150,.35)
+  }
+  .cards{display:flex; flex-wrap:wrap; justify-content:center; gap:16px; margin:22px 0 8px}
+  .card{
+    width:110px; height:180px; border-radius:14px; background:var(--card); border:2px solid #f3c0d7;
+    display:flex; align-items:center; justify-content:center; font-weight:900; color:var(--accent); font-size:22px; cursor:pointer;
+    box-shadow:0 10px 22px rgba(0,0,0,.06), inset 0 -12px 26px rgba(255,215,0,.15);
+    transition:transform .2s, box-shadow .2s, background .2s
+  }
+  .card:hover{transform:translateY(-4px) rotate(-2deg); background:linear-gradient(145deg,var(--gold),#ff9fbc); color:#fff}
+  .result{max-width:720px; margin:18px auto 0; background:#fff; border:2px solid #f3c0d7; border-radius:14px; padding:16px 18px; display:none}
+  .badge{display:inline-block; padding:.3em 1em; border-radius:999px; background:#fff0f6; border:2px solid #ffc1dd; color:#d91b71; font-weight:900}
+  .fortune{margin:10px 0; font-size:18px; line-height:1.9}
+  .meta{display:flex; gap:8px; flex-wrap:wrap; justify-content:center}
+  .pill{border:2px dashed #f3c0d7; padding:8px 12px; border-radius:999px; background:#fffafc; font-weight:700}
+</style>
 </head>
 <body>
-  <h1>💖 ギャル恋みくじ 💖</h1>
-  <input type="text" id="name" class="name-input" placeholder="あなたの名前を入力してね♡">
-  <div c
+  <header><h1>💖 ギャル恋みくじ 💖</h1></header>
+  <main>
+    <section id="step1">
+      <div class="field">
+        <input id="name" type="text" placeholder="おなまえ（任意）">
+      </div>
+      <button class="btn" id="start">おみくじを出す</button>
+    </section>
 
+    <section id="step2" style="display:none">
+      <p style="margin-top:10px">1枚えらんでね👇</p>
+      <div class="cards" id="cards">
+        <div class="card">恋</div>
+        <div class="card">愛</div>
+        <div class="card">運</div>
+        <div class="card">命</div>
+        <div class="card">縁</div>
+      </div>
+    </section>
+
+    <section id="step3" class="result">
+      <span class="badge" id="luck">大吉</span>
+      <div class="fortune" id="text">…</div>
+      <div class="meta">
+        <div class="pill">ラッキーカラー：<b id="color">ローズピンク</b></div>
+        <div class="pill">ラッキーアイテム：<b id="item">ハートのピアス</b></div>
+      </div>
+    </section>
+  </main>
+
+<script>
+  // 文言セット（かわいい多め）
+  const LUCK = ["大吉","中吉","小吉","吉","凶","大凶"];
+  const MESSAGES = [
+    "焦んなくてOK💅 今は下準備のターン。磨いてるあんた、最強に可愛いよ！",
+    "神ってるチャンス来そう✨ 目が合ったらニコっていこ〜！",
+    "無理せず自分ペースで🫶 余裕ある人がいちばんモテるのよ？",
+    "連絡は短く甘く💌 深追いより“余白”が効く日！",
+    "今日は自分メンテの日💄 次の運命はもう待機してるって！",
+    "ちょい待ち！今は守りのターン。寝て起きたら運気アップ⤴︎"
+  ];
+  const COLORS = ["ローズピンク","ベビーピンク","さくら","シャンパンゴールド","あい","ミルキーバイオレット"];
+  const ITEMS  = ["ピンクのリップ","ふわもこポーチ","ハートのピアス","いちごミルク","スマホリング","ミニキャンドル","キラヘアピン","リボンのヘアゴム"];
+
+  const step1=document.getElementById('step1');
+  const step2=document.getElementById('step2');
+  const step3=document.getElementById('step3');
+
+  document.getElementById('start').addEventListener('click', ()=>{
+    step1.style.display='none';
+    step2.style.display='block';
+  });
+
+  // 5枚のカードにクリック
+  document.querySelectorAll('#cards .card').forEach(c=>{
+    c.addEventListener('click', ()=>{
+      const name = (document.getElementById('name').value || "あなた").trim();
+      const luck = LUCK[Math.floor(Math.random()*LUCK.length)];
+      const msg  = MESSAGES[Math.floor(Math.random()*MESSAGES.length)];
+      const color= COLORS[Math.floor(Math.random()*COLORS.length)];
+      const item = ITEMS[Math.floor(Math.random()*ITEMS.length)];
+      document.getElementById('luck').textContent = luck;
+      document.getElementById('text').innerHTML   = `${name}の恋みくじは <b>${luck}</b> っぽ！<br>${msg}`;
+      document.getElementById('color').textContent= color;
+      document.getElementById('item').textContent = item;
+      step2.style.display='none';
+      step3.style.display='block';
+      step3.scrollIntoView({behavior:'smooth', block:'start'});
+    });
+  });
+</script>
+</body>
+</html>
